@@ -1,6 +1,6 @@
 import "./style.css";
 
-import "./elements/task.js";
+import "./elements/task-item.js";
 
 const addTaskBtn = document.querySelector("#addTask-btn");
 
