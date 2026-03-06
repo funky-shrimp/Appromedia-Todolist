@@ -1,0 +1,31 @@
+
+#Declaring services
+services:
+  #The frontend is a simple HTML,CSS and JS todolsit app
+  frontend:
+    build: ./frontend/
+    container_name: frontend
+    ports:
+      - "8080:80"
+    networks:
+      - todolist-network
+  database:
+    build: ./db/
+    container_name: pgdatabase
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: todolist
+    ports:
+      - "5432:5432"
+    networks:
+      - todolist-network
+    volumes:
+      - db_data:/var/lib/postgresql
+
+networks:
+  todolist-network:
+    driver: bridge
+
+volumes:
+  db_data:
